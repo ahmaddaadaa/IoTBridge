@@ -1,7 +1,10 @@
 name: Lint and Test
 
 on:
-  pull_request:
+    push:
+        branches:
+          - '**' 
+    pull_request:
     types: [opened, synchronize, reopened]
   issue_comment:
     types: [created, edited]
