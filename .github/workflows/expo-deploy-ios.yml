@@ -1,0 +1,68 @@
+name: Expo Deploy iOS
+
+on:
+  workflow_dispatch:
+    inputs:
+      environment:
+        description: 'Select the environment to deploy'
+        required: true
+        default: 'ios-staging'
+        type: choice
+        options: 
+          - ios-staging
+          - ios-production
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '20'
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Log in to Expo
+        env:
+          EXPO_TOKEN: ${{ secrets.EXPO_TOKEN }}
+        run: expo login --token $EXPO_TOKEN
+
+      - name: Set environment variables
+        run: echo "APP_VARIANT=${{ github.event.inputs.environment }}" >> $GITHUB_ENV
+
+      - name: Publish to Expo and Build iOS
+        run: |
+          if [ "${{ github.event.inputs.environment }}" == "ios-staging" ]; then
+            expo publish --release-channel ios-staging
+            expo build:ios --release-channel ios-staging --type archive
+          elif [ "${{ github.event.inputs.environment }}" == "ios-production" ]; then
+            expo publish --release-channel ios-production
+            expo build:ios --release-channel ios-production --type archive
+          fi
+
+      - name: Decode and save App Store Connect private key
+        run: |
+          echo "${{ secrets.APP_STORE_CONNECT_PRIVATE_KEY }}" | base64 --decode > /tmp/private_key.p8
+
+      - name: Upload to App Store Connect
+        env:
+          API_KEY_ID: ${{ secrets.APP_STORE_CONNECT_API_KEY_ID }}
+          ISSUER_ID: ${{ secrets.APP_STORE_CONNECT_ISSUER_ID }}
+          PRIVATE_KEY_PATH: /tmp/private_key.p8
+        run: |
+          xcrun altool --upload-app --type ios --file path/to/your/build.ipa --apiKey $API_KEY_ID --apiIssuer $ISSUER_ID --apiKeyPath $PRIVATE_KEY_PATH
+
+      - name: Upload to TestFlight
+        if: github.event.inputs.environment == 'ios-staging'
+        env:
+          API_KEY_ID: ${{ secrets.APP_STORE_CONNECT_API_KEY_ID }}
+          ISSUER_ID: ${{ secrets.APP_STORE_CONNECT_ISSUER_ID }}
+          PRIVATE_KEY_PATH: /tmp/private_key.p8
+        run: |
+          xcrun altool --upload-app --type ios --file path/to/your/build.ipa --apiKey $API_KEY_ID --apiIssuer $ISSUER_ID --apiKeyPath $PRIVATE_KEY_PATH
