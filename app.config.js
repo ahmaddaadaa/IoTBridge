@@ -53,5 +53,11 @@ export default {
         projectId: "ca6f80d8-d0af-4024-b992-23698332b259",
       },
     },
+    updates: {
+      url: "https://u.expo.dev/ca6f80d8-d0af-4024-b992-23698332b259",
+    },
+    runtimeVersion: {
+      policy: "appVersion",
+    },
   },
 };
