@@ -34,19 +34,21 @@ jobs:
       - name: Log in to Expo with EAS CLI
         env:
           EXPO_TOKEN: ${{ secrets.EXPO_TOKEN }}
-        run: eas login --token $EXPO_TOKEN
+        run: eas login --sso
 
       - name: Set environment variables
         run: echo "APP_VARIANT=${{ github.event.inputs.environment }}" >> $GITHUB_ENV
 
       - name: Publish to Expo and Build iOS
+        env:
+          EXPO_TOKEN: ${{ secrets.EXPO_TOKEN }}
         run: |
           if [ "${{ github.event.inputs.environment }}" == "ios-staging" ]; then
             expo publish --release-channel ios-staging
-            eas build -p ios -e preview
+            eas build -p ios -e preview --non-interactive --profile ios-staging --token $EXPO_TOKEN
           elif [ "${{ github.event.inputs.environment }}" == "ios-production" ]; then
             expo publish --release-channel ios-production
-            eas build -p ios -e production
+            eas build -p ios -e production --non-interactive --profile ios-production --token $EXPO_TOKEN
           fi
 
       - name: Decode and save App Store Connect private key
@@ -58,8 +60,9 @@ jobs:
           API_KEY_ID: ${{ secrets.APP_STORE_CONNECT_API_KEY_ID }}
           ISSUER_ID: ${{ secrets.APP_STORE_CONNECT_ISSUER_ID }}
           PRIVATE_KEY_PATH: /tmp/private_key.p8
+          EXPO_TOKEN: ${{ secrets.EXPO_TOKEN }}
         run: |
-          eas submit --platform ios --latest --key-id $API_KEY_ID --issuer-id $ISSUER_ID --key-path $PRIVATE_KEY_PATH
+          eas submit --platform ios --latest --non-interactive --key-id $API_KEY_ID --issuer-id $ISSUER_ID --key-path $PRIVATE_KEY_PATH --token $EXPO_TOKEN
 
       - name: Upload to TestFlight
         if: github.event.inputs.environment == 'ios-staging'
@@ -67,5 +70,6 @@ jobs:
           API_KEY_ID: ${{ secrets.APP_STORE_CONNECT_API_KEY_ID }}
           ISSUER_ID: ${{ secrets.APP_STORE_CONNECT_ISSUER_ID }}
           PRIVATE_KEY_PATH: /tmp/private_key.p8
+          EXPO_TOKEN: ${{ secrets.EXPO_TOKEN }}
         run: |
-          eas submit --platform ios --latest --key-id $API_KEY_ID --issuer-id $ISSUER_ID --key-path $PRIVATE_KEY_PATH
+          eas submit --platform ios --latest --non-interactive --key-id $API_KEY_ID --issuer-id $ISSUER_ID --key-path $PRIVATE_KEY_PATH --token $EXPO_TOKEN
