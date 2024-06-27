@@ -4,11 +4,11 @@ on:
   workflow_dispatch:
     inputs:
       environment:
-        description: "Select the environment to deploy"
+        description: 'Select the environment to deploy'
         required: true
-        default: "ios-staging"
+        default: 'ios-staging'
         type: choice
-        options:
+        options: 
           - ios-staging
           - ios-production
 
@@ -23,7 +23,7 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v2
         with:
-          node-version: "20"
+          node-version: '20'
 
       - name: Install dependencies
         run: npm install
@@ -31,10 +31,10 @@ jobs:
       - name: Install EAS CLI
         run: npm install -g eas-cli@latest
 
-      - name: Log in to Expo
+      - name: Log in to Expo with EAS CLI
         env:
           EXPO_TOKEN: ${{ secrets.EXPO_TOKEN }}
-        run: npx expo login --token $EXPO_TOKEN
+        run: eas login --token $EXPO_TOKEN
 
       - name: Set environment variables
         run: echo "APP_VARIANT=${{ github.event.inputs.environment }}" >> $GITHUB_ENV
