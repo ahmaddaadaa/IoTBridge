@@ -26,7 +26,7 @@ export default {
   expo: {
     name: getAppName(),
     slug: "setup",
-    version: "1.0.0-beta",
+    version: "1.0.0",
     orientation: "portrait",
     icon: "./assets/icon.png",
     userInterfaceStyle: "light",
@@ -39,6 +39,20 @@ export default {
       buildNumber: "1",
       supportsTablet: true,
       bundleIdentifier: bundleID,
+      config: {
+        googleSignIn: {
+          reservedClientId: "your-reversed-client-id",
+        },
+      },
+      infoPlist: {
+        NSCameraUsageDescription: "This app uses the camera to scan barcodes.",
+        NSLocationWhenInUseUsageDescription:
+          "This app uses location to find nearby places.",
+        UIBackgroundModes: ["fetch", "remote-notification"],
+        NSAppTransportSecurity: {
+          NSAllowsArbitraryLoads: true,
+        },
+      },
     },
     android: {
       versionCode: "1",
@@ -46,6 +60,22 @@ export default {
         foregroundImage: "./assets/adaptive-icon.png",
         backgroundColor: "#ffffff",
       },
+      package: "your.package.name",
+      permissions: [
+        "CAMERA",
+        "ACCESS_FINE_LOCATION",
+        "VIBRATE",
+        "WAKE_LOCK",
+        "com.anddoes.launcher.permission.UPDATE_COUNT",
+        "com.google.android.c2dm.permission.RECEIVE",
+        "com.htc.launcher.permission.READ_SETTINGS",
+        "com.htc.launcher.permission.UPDATE_SHORTCUT",
+        "com.majeur.launcher.permission.UPDATE_BADGE",
+        "com.sec.android.provider.badge.permission.READ",
+        "com.sec.android.provider.badge.permission.WRITE",
+        "com.sonyericsson.home.permission.BROADCAST_BADGE",
+      ],
+      useNextNotificationsApi: true,
     },
     web: {
       favicon: "./assets/favicon.png",
