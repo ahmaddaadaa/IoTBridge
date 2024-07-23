@@ -1,6 +1,6 @@
 import React from "react";
 import { StyleSheet, View } from "react-native";
-import SensorChart from "./src/components/SensorChart";
+import SensorChart from "./components/SensorChart";
 
 const App: React.FC = () => {
   return (
