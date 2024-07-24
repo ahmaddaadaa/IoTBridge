@@ -29,7 +29,7 @@ export const styles = StyleSheet.create({
     paddingBottom: 100, // Ensures enough space to scroll up and down
   },
   spacerTop: {
-    height: 50, // Spacer to ensure a good safety gap at the top
+    height: 35, // Spacer to ensure a good safety gap at the top
   },
   header: {
     fontSize: 24,

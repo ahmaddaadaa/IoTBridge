@@ -10,7 +10,7 @@ const HomeScreen: React.FC<{ username: string; onLogout: () => void }> = ({
 }) => {
   return (
     <ImageBackground
-      source={require("../assets/background.jpg")}
+      source={require("../assets/galaxy.jpg")}
       style={styles.background}
     >
       <View style={styles.container}>
