@@ -1,0 +1,28 @@
+{
+    "descriptions": [
+      {
+        "title": "Welcome to IoT Bridge",
+        "description": "Connecting your IoT solutions seamlessly and efficiently."
+      },
+      {
+        "title": "Real-Time Monitoring",
+        "description": "Stay informed with live updates on your sensor data and proactively manage any potential issues."
+      },
+      {
+        "title": "Easy to Use",
+        "description": "Designed with simplicity in mind, our app lets you focus on what matters most."
+      },
+      {
+        "title": "Secure",
+        "description": "Your data is stored securely, ensuring privacy and protection at all times."
+      },
+      {
+        "title": "Customizable Alerts",
+        "description": "Set up custom alerts to get notified immediately when critical issues arise."
+      },
+      {
+        "title": "Support",
+        "description": "For any assistance, reach out to us at info@iotbridge.ca."
+      }
+    ]
+  }
