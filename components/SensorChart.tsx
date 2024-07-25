@@ -1,7 +1,6 @@
 import React, { useState, useCallback } from "react";
 import { Text, View, Dimensions, TouchableOpacity } from "react-native";
 import { LineChart } from "react-native-chart-kit";
-import { Button } from "react-native-elements";
 import * as Animatable from "react-native-animatable";
 import useWebSocket, { SensorData } from "../hooks/useWebSocket";
 import useNotifications from "../hooks/useNotifications";
@@ -45,16 +44,17 @@ const SensorChart: React.FC = () => {
   };
 
   const getDataForChart = () => {
-    if (sensorData.length === 0 || selectedSensors.length === 0) {
+    const limitedData = sensorData.slice(-20);
+    if (limitedData.length === 0 || selectedSensors.length === 0) {
       return {
         labels: ["0"],
         datasets: [{ data: [0] }],
       };
     }
 
-    const labels = sensorData.map((_, index) => index.toString());
+    const labels = limitedData.map((_, index) => index.toString());
     const datasets = selectedSensors.map((sensor) => ({
-      data: sensorData.map((d) => d[sensor as keyof SensorData]),
+      data: limitedData.map((d) => d[sensor as keyof SensorData]),
       color: (opacity = 1) =>
         sensor === "sensor1"
           ? `rgba(0, 150, 255, ${opacity})`
@@ -68,8 +68,7 @@ const SensorChart: React.FC = () => {
   };
 
   return (
-    <View style={styles.container}>
-      <Text style={styles.header}>Real-Time Sensor Data</Text>
+    <View style={styles.chartContainer}>
       <Animatable.View
         animation="fadeIn"
         duration={1000}
@@ -122,15 +121,12 @@ const SensorChart: React.FC = () => {
             </Animatable.View>
           </TouchableOpacity>
         ))}
-        <Button
-          title="All Sensors"
-          type={selectedSensors.length === 3 ? "solid" : "outline"}
+        <TouchableOpacity
+          style={[styles.button, styles.allSensorsButton]}
           onPress={() => setSelectedSensors(["sensor1", "sensor2", "sensor3"])}
-          buttonStyle={{
-            margin: 5,
-            borderColor: selectedSensors.length === 3 ? "#0A84FF" : "#e0e0e0",
-          }}
-        />
+        >
+          <Text style={styles.buttonText}>All Sensors</Text>
+        </TouchableOpacity>
       </View>
     </View>
   );

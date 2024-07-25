@@ -8,9 +8,7 @@ export type SensorData = {
 };
 
 const useWebSocket = (onMessage: (data: SensorData) => void) => {
-  const [sensorData, setSensorData] = useState<SensorData[]>([
-    { timestamp: Date.now(), sensor1: 0, sensor2: 0, sensor3: 0 },
-  ]);
+  const [sensorData, setSensorData] = useState<SensorData[]>([]);
   const ws = useRef<WebSocket | null>(null);
 
   useEffect(() => {
@@ -24,7 +22,7 @@ const useWebSocket = (onMessage: (data: SensorData) => void) => {
       try {
         const data: SensorData = JSON.parse(event.data);
         if (isValidData(data)) {
-          setSensorData((prevData) => [...prevData.slice(-19), data]);
+          setSensorData((prevData) => [...prevData, data]);
           onMessage(data);
         } else {
           console.log("Received invalid data:", data);

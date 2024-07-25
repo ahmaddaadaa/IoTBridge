@@ -1,64 +1,28 @@
 import React from "react";
-import { View, Text, Button, StyleSheet, Image } from "react-native";
-import { useNavigation } from "@react-navigation/native";
+import { View, Text, TouchableOpacity, Image } from "react-native";
+import { styles } from "../styles/styles";
 
 const StatusBarComponent: React.FC<{
   username: string;
   isLoggedIn: boolean;
-  onLogout: (navigation: any) => void;
+  onLogout: () => void;
 }> = ({ username, isLoggedIn, onLogout }) => {
-  const navigation = useNavigation();
-
   return (
-    <View style={styles.statusBar}>
-      <View style={styles.leftContainer}>
-        {navigation.canGoBack() && (
-          <Button title="Back" onPress={() => navigation.goBack()} />
-        )}
-        <Image source={require("../assets/logo.png")} style={styles.logo} />
-      </View>
-      <Text style={styles.username}>
-        {isLoggedIn ? `Welcome, ${username}` : "Please log in to continue"}
+    <View style={styles.navbar}>
+      <Image
+        source={require("../assets/logo.png")} // Ensure this path matches the location of your logo
+        style={styles.logo}
+      />
+      <Text style={styles.navbarText}>
+        {isLoggedIn ? `Welcome, ${username}` : "Please log in"}
       </Text>
       {isLoggedIn && (
-        <Button title="Logout" onPress={() => onLogout(navigation)} />
+        <TouchableOpacity onPress={onLogout} style={styles.logoutButton}>
+          <Text style={styles.logoutButtonText}>Logout</Text>
+        </TouchableOpacity>
       )}
     </View>
   );
 };
-
-const styles = StyleSheet.create({
-  statusBar: {
-    width: "100%",
-    height: 60,
-    backgroundColor: "#e0e0e0", // Light gray background
-    justifyContent: "space-between",
-    alignItems: "center",
-    flexDirection: "row",
-    paddingHorizontal: 20,
-    position: "absolute",
-    bottom: 0,
-    shadowColor: "#000",
-    shadowOffset: { width: 0, height: -2 },
-    shadowOpacity: 0.8,
-    shadowRadius: 2,
-    elevation: 5,
-  },
-  leftContainer: {
-    flexDirection: "row",
-    alignItems: "center",
-  },
-  logo: {
-    width: 40,
-    height: 40,
-    marginLeft: 10,
-    resizeMode: "contain",
-  },
-  username: {
-    fontSize: 18,
-    fontWeight: "bold",
-    color: "#007AFF", // Blue text
-  },
-});
 
 export default StatusBarComponent;
