@@ -5,7 +5,6 @@ import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
 import WelcomeScreen from "./components/WelcomeScreen";
 import HomeScreen from "./components/HomeScreen";
-import AlertList from "./components/AlertList";
 import { styles } from "./styles/styles";
 
 const Stack = createStackNavigator();
@@ -51,15 +50,6 @@ const App: React.FC = () => {
                   props.navigation.navigate("Welcome")
                 )
               }
-            </Stack.Screen>
-            <Stack.Screen name="Alerts" options={{ headerShown: false }}>
-              {(props) => (
-                <AlertList
-                  {...props}
-                  username={username}
-                  onLogout={() => handleLogout(props.navigation)}
-                />
-              )}
             </Stack.Screen>
           </Stack.Navigator>
         </NavigationContainer>
