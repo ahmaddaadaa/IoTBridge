@@ -26,10 +26,10 @@ export const styles = StyleSheet.create({
   },
   scrollContainer: {
     alignItems: "center",
-    paddingBottom: 100, // Ensures enough space to scroll up and down
+    paddingBottom: 100,
   },
   spacerTop: {
-    height: 35, // Spacer to ensure a good safety gap at the top
+    height: 35,
   },
   header: {
     fontSize: 24,
@@ -37,7 +37,10 @@ export const styles = StyleSheet.create({
     marginBottom: 10,
   },
   chartContainer: {
-    width: "100%",
+    width: "90%", // Ensure chart is centered
+    alignItems: "center",
+    justifyContent: "center",
+    marginBottom: 20,
   },
   buttonContainer: {
     flexDirection: "row",
@@ -46,12 +49,12 @@ export const styles = StyleSheet.create({
     marginVertical: 10,
   },
   button: {
-    width: 70,
-    height: 70,
-    borderRadius: 35,
+    width: 100, // Ensure equal size
+    height: 50, // Ensure equal size
     justifyContent: "center",
     alignItems: "center",
     margin: 10,
+    borderRadius: 10,
   },
   buttonActive: {
     backgroundColor: "#0A84FF",
@@ -60,6 +63,27 @@ export const styles = StyleSheet.create({
     backgroundColor: "#e0e0e0",
   },
   buttonText: {
+    color: "#fff",
+    fontWeight: "bold",
+  },
+  allSensorsButton: {
+    backgroundColor: "#32CD32", // Green color for All Sensors button
+    width: 100, // Match shape of other buttons
+    height: 50, // Match shape of other buttons
+    justifyContent: "center",
+    alignItems: "center",
+    margin: 10,
+    borderRadius: 10,
+  },
+  alertButton: {
+    backgroundColor: "#FF0000", // Red color for alert button
+    alignSelf: "center",
+    marginTop: 20,
+    paddingHorizontal: 40, // Increased width
+    paddingVertical: 10,
+    borderRadius: 10,
+  },
+  alertButtonText: {
     color: "#fff",
     fontWeight: "bold",
   },
@@ -115,9 +139,51 @@ export const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
     flexDirection: "row",
+    position: "absolute",
+    bottom: 0,
+    left: 0,
+    right: 0,
   },
   navbarText: {
     fontSize: 18,
     fontWeight: "bold",
+  },
+  logo: {
+    width: 40,
+    height: 40,
+    marginRight: 10,
+  },
+  logoutButton: {
+    marginLeft: 20,
+    padding: 10,
+    backgroundColor: "#ff6347",
+    borderRadius: 10,
+  },
+  logoutButtonText: {
+    color: "#fff",
+    fontWeight: "bold",
+  },
+  alertItem: {
+    padding: 10,
+    marginVertical: 8,
+    backgroundColor: "#fff",
+    borderRadius: 5,
+    shadowColor: "#000",
+    shadowOffset: { width: 0, height: 1 },
+    shadowOpacity: 0.3,
+    shadowRadius: 2,
+    elevation: 3,
+  },
+  alertListContainer: {
+    flex: 1,
+    paddingHorizontal: 16,
+    marginTop: 16,
+  },
+  alertText: {
+    fontSize: 16,
+    color: "#000",
+  },
+  alertListContentContainer: {
+    paddingBottom: 100,
   },
 });
