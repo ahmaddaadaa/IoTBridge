@@ -7,20 +7,22 @@
 ## Screenshots and Demo 📸
 Here are some screenshots and a demo of the IoT Bridge mobile app in action.
 
-<div style="display: flex; justify-content: space-between; flex-wrap: wrap;">
-  <div style="flex: 1; text-align: center; padding: 10px; min-width: 200px;">
-    <img src="./assets/home_screen.jpeg" width="200" />
-    <p>Description: This is the home screen. It has a login field and scrollable description containers that tell more about the app.</p>
-  </div>
-  <div style="flex: 1; text-align: center; padding: 10px; min-width: 200px;">
-    <img src="./assets/main_app_screen.jpeg" width="200" />
-    <p>Description: After logging in, you will be able to see a chart that shows real-time data. You can switch between sensors to view different data and push a button to navigate to the alert screen where you will see all the alerts.</p>
-  </div>
-  <div style="flex: 1; text-align: center; padding: 10px; min-width: 200px;">
-    <img src="./assets/alert_screen.jpeg" width="200" />
-    <p>Description: Here you can find all of the alert details for sensors that have exceeded predefined threshold values.</p>
-  </div>
-</div>
+<table>
+  <tr>
+    <td align="center">
+      <img src="./assets/home_screen.jpeg" width="200" />
+      <p>Description: This is the home screen. It has a login field and scrollable description containers that tell more about the app.</p>
+    </td>
+    <td align="center">
+      <img src="./assets/main_app_screen.jpeg" width="200" />
+      <p>Description: After logging in, you will be able to see a chart that shows real-time data. You can switch between sensors to view different data and push a button to navigate to the alert screen where you will see all the alerts.</p>
+    </td>
+    <td align="center">
+      <img src="./assets/alert_screen.jpeg" width="200" />
+      <p>Description: Here you can find all of the alert details for sensors that have exceeded predefined threshold values.</p>
+    </td>
+  </tr>
+</table>
 
 ### Video Demonstration
 <div style="text-align: center;">
