@@ -7,21 +7,26 @@
 ## Screenshots and Demo 📸
 Here are some screenshots and a demo of the IoT Bridge mobile app in action.
 
-### Home Screen
-![Home Screen](./assets/home_screen.jpeg)
-*Description: This is the home screen. It has a login field and scrollable description containers that tell more about the app.*
-
-### Main App Screen
-![Main App Screen](./assets/main_app_screen.jpeg)
-*Description: After logging in, you will be able to see a chart that shows real-time data. You can switch between sensors to view different data and push a button to navigate to the alert screen where you will see all the alerts.*
-
-### Alert Screen
-![Alert Screen](./assets/alert_screen.jpeg)
-*Description: Here you can find all of the alert details for sensors that have exceeded predefined threshold values.*
+<div style="display: flex; justify-content: space-between;">
+  <div style="flex: 1; text-align: center;">
+    <img src="./assets/home_screen.png" width="250"/>
+    <p>Description: This is the home screen. It has a login field and scrollable description containers that tell more about the app.</p>
+  </div>
+  <div style="flex: 1; text-align: center;">
+    <img src="./assets/main_app_screen.png" width="250"/>
+    <p>Description: After logging in, you will be able to see a chart that shows real-time data. You can switch between sensors to view different data and push a button to navigate to the alert screen where you will see all the alerts.</p>
+  </div>
+  <div style="flex: 1; text-align: center;">
+    <img src="./assets/alert_screen.png" width="250"/>
+    <p>Description: Here you can find all of the alert details for sensors that have exceeded predefined threshold values.</p>
+  </div>
+</div>
 
 ### Video Demonstration
-![Video Demonstration](./assets/demo.gif)
-*Description: Here you can see a video demonstration of the app in action.*
+<div style="text-align: center;">
+  <img src="./assets/demo.gif" width="350"/>
+  <p>Description: Here you can see a video demonstration of the app in action.</p>
+</div>
 
 ## Features ✨
 
