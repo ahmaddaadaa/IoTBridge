@@ -51,7 +51,8 @@ Before you begin, ensure you have met the following requirements:
 1. **Clone the Repository:**
 
    ```sh
-   git clone git@github.com:IoTBridge-Connectivity-Solutions-Inc/IoTBridge_mobileApp.git
+   git clone git@github.com:ahmaddaadaa/IoTBridge.git
+   IoTBridge_mobileApp.git
    ```
 
 2. **Navigate to the Project Directory:**
