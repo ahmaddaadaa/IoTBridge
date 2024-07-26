@@ -1,8 +1,27 @@
-# IoTBridge_mobileApp 🚀
+# IoTBridge_mobileApp(Under Development) 🚀
 
 ## Introduction
 
 **IoTBridge_mobileApp** is a cutting-edge mobile application designed to provide seamless connectivity solutions for IoT devices. Developed using Expo for React Native, this app aims to bridge the gap between IoT devices and users, ensuring a user-friendly interface and robust functionality.
+
+## Screenshots and Demo 📸
+Here are some screenshots and a demo of the IoT Bridge mobile app in action.
+
+### Home Screen
+![Home Screen](./assets/home_screen.jpeg)
+*Description: This is the home screen. It has a login field and scrollable description containers that tell more about the app.*
+
+### Main App Screen
+![Main App Screen](./assets/main_app_screen.jpeg)
+*Description: After logging in, you will be able to see a chart that shows real-time data. You can switch between sensors to view different data and push a button to navigate to the alert screen where you will see all the alerts.*
+
+### Alert Screen
+![Alert Screen](./assets/alert_screen.jpeg)
+*Description: Here you can find all of the alert details for sensors that have exceeded predefined threshold values.*
+
+### Video Demonstration
+![Video Demonstration](./assets/demo.gif)
+*Description: Here you can see a video demonstration of the app in action.*
 
 ## Features ✨
 
@@ -20,7 +39,7 @@ Before you begin, ensure you have met the following requirements:
 - **Node.js** and **npm** installed on your machine.
 - **EAS CLI** installed globally (`npm install -g eas-cli`).
 
-### Installation
+### Installation ⚙️
 
 1. **Clone the Repository:**
 
@@ -43,7 +62,7 @@ Before you begin, ensure you have met the following requirements:
 4. **Start the Development Server:**
 
    ```sh
-   expo start
+   npx expo start
    ```
 
 ## Usage 📱
@@ -53,64 +72,21 @@ Before you begin, ensure you have met the following requirements:
 
 2. **Log In:**
    Enter your credentials to log in and start managing your IoT devices.
+   username: admin
+   passward: admin
 
 3. **Add Devices:**
    Navigate to the 'Devices' section to add new IoT devices.
 
-4. **Monitor Devices:**
+4. **Monitor Devices:(under devvelopment)**
    View the status and data of your connected devices in real-time.
 
-## Contributing 🤝
-
-Contributions are welcome! Please follow these steps to contribute:
-
-1. **Fork the Repository:**
-
-   Click the 'Fork' button on the GitHub page.
-
-2. **Clone Your Fork:**
-
-   ```sh
-   git clone git@github.com:your-username/IoTBridge_mobileApp.git
-   ```
-
-3. **Create a Branch:**
-
-   ```sh
-   git checkout -b feature/your-feature-name
-   ```
-
-4. **Make Changes:**
-
-   Implement your feature or fix the bug.
-
-5. **Commit Changes:**
-
-   ```sh
-   git commit -m 'Add some feature'
-   ```
-
-6. **Push to Branch:**
-
-   ```sh
-   git push origin feature/your-feature-name
-   ```
-
-7. **Create a Pull Request:**
-
-   Go to the original repository on GitHub and create a pull request.
-
-## License 📄
-
-This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
 
 ## Contact 📬
 
 If you have any questions or feedback, feel free to reach out:
 
-- **Email:** support@iotbridge.ca
-- **GitHub Issues:** [IoTBridge_mobileApp Issues](https://github.com/IoTBridge-Connectivity-Solutions-Inc/IoTBridge_mobileApp/issues)
+- **Email:** ahmadd@uvic.ca
 
-## Acknowledgements 🙌
-
-We would like to thank all the contributors and the open-source community for their support and contributions.
+## Note ℹ️
+If you try to download the app, it won't operate since environment variables for database connectivity and server connectivity are stored in a `.env` file, which you don't have access to. Additionally, the backend server is hosted in a different repository.
